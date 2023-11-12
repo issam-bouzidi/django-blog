@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>{{ post.title }}</title>
+{% endblock %}
+{% block content %}
+    <h1>Le blog de Dbyba</h1>
+        <article class="post-detail">
+            <h1>{{ post.title }}</h1>
+            <h5>Publié par <b>{{ post.author.username }}</b> Le <i>{{ post.created_on|date:'j F Y' }}</i></h5>
+            {% if post.thumbnail.url %}
+                <img src="{{ post.thumbnail.url }}" alt="Image de l'article" />
+            {% endif %}
+            <div>{{ post.content|linebreaks|safe }}</div>
+        </article>
+{% endblock %}
